@@ -1,0 +1,128 @@
+<div class="container">
+  <h1>Pipes</h1>
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Pipe</th>
+        <th scope="col">Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"> {{name}} </th>
+        <td>uppercase</td>
+        <td>{{name | uppercase}}</td>
+
+      </tr>
+      <tr>
+        <th scope="row">{{name}}</th>
+        <td>lowercase</td>
+        <td>{{ name | lowercase }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{name}}</th>
+        <td>slice:3</td>
+        <td>{{ name | slice:3 }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{name}}</th>
+        <td>slice: 0:3</td>
+        <td>{{ name | slice: 0:3 }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{arrayNum}}</th>
+        <td>slice: 1:5</td>
+        <td>{{ arrayNum  | slice: 1:5 }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{PI}}</th>
+        <td>number:'1.1-3'</td>
+        <!-- {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}. -->
+        <td>{{ PI  | number:'1.1-3'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{PI}}</th>
+        <td> number:'.1-2' </td>
+        <td>{{ PI  | number:'.1-2' }}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{numberPercent}}</th>
+        <td>percent </td>
+        <td>{{ numberPercent  | percent}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{numberPercent}}</th>
+        <td>percent:'2.2-4 </td>
+        <td>{{ numberPercent  | percent:'2.2-4'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{salary}}</th>
+        <td>currency </td>
+        <td>{{ salary  | currency}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{salary}}</th>
+        <td>currency:'EUR' </td>
+        <td>{{ salary  | currency:'EUR'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{salary}}</th>
+        <td>currency:'CAD':'symbol':'4.-0-0' </td>
+        <td>{{ salary  | currency:'CAD':'symbol':'4.0-0'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{salary}}</th>
+        <td>currency:'CAD':'symbol-narrow':'4.-0-0' </td>
+        <td>{{ salary  | currency:'CAD':'symbol-narrow':'4.0-0'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{valuePromise}}</th>
+        <td>async</td>
+        <td>{{ valuePromise | async}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{currentDate}}</th>
+        <td>date</td>
+        <td>{{ currentDate | date}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{currentDate}}</th>
+        <td>date :'medium'</td>
+        <td>{{ currentDate | date :'medium'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{currentDate}}</th>
+        <td> date :'MMMM-dd'</td>
+        <td>{{ currentDate |   date :'MMMM-dd'}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{fullName}}</th>
+        <td> pipe personalizado capitalizado</td>
+        <td>{{fullName | capitalizado}}</td>
+      </tr>
+      <tr>
+        <th scope="row">{{ name }}</th>
+        <td> password {{show}}
+          <br>
+          <button type="button" class="btn btn-outline-primary" (click)="show = !show">Activar/desactivar</button>
+        </td>
+        <td>{{ name | passwordpipe:show }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Slice</h5>
+  <ul>
+    <li *ngFor="let item of arrayNum | slice: 2:10">{{item}}</li>
+  </ul>
+  <h5>Json</h5>
+  <pre>
+      {{hero | json}}
+
+  </pre>
+  <h5>youtube</h5>
+  <iframe width="560" height="315" [src]="video | doomsafe: 'https://www.youtube.com/embed/'" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
